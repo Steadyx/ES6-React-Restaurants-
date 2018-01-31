@@ -8,15 +8,13 @@ class Home extends Component {
 	render() {
 		return (
 			<HomeContainer>
-				<CenterMap>
-					<Grid>
-						<Row middle="xs">
-							<Col center="xs">
-								<GoogleMaps />
-							</Col>
-						</Row>
-					</Grid>
-				</CenterMap>
+				<Grid>
+					<Row middle="xs">
+						<Col center="xl" style={{ width: "100%", height: "600px" }}>
+							<GoogleMaps />
+						</Col>
+					</Row>
+				</Grid>
 			</HomeContainer>
 		);
 	}

@@ -1,16 +1,5 @@
 import React, { Component } from "react";
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-
-const style = {
-	position: "relative",
-	width: "50%",
-	height: "50%",
-	zIndex: 1000,
-	display: "flex",
-	justifyContent: "center",
-	alignItems: "center",
-	boxShadow: " inset 0 5px 10px #000000"
-};
+import { GoogleMap, Marker } from "react-google-maps";
 
 class GoogleMaps extends Component {
 	fetchPlaces = (mapProps, map) => {
@@ -18,11 +7,21 @@ class GoogleMaps extends Component {
 		const service = new google.maps.places.PlacesService(map);
 	};
 
+	comoponentDidMount() {
+		console.log(process.env.REACT_APP_GOOGLE_MAPS_PUBLIC_KEY);
+	}
+
 	render() {
-		return <Map google={this.props.google} style={style} />;
+		console.log(process.env.REACT_APP_GOOGLE_MAPS_PUBLIC_KEY);
+
+		return (
+			<GoogleMapReact
+				bootstrapURLKeys={{
+					key: process.env.REACT_APP_GOOGLE_MAPS_PUBLIC_KEY
+				}}
+			/>
+		);
 	}
 }
 
-export default GoogleApiWrapper({
-	apiKey: process.env.GOOGLE_MAPS_PUBLIC_KEY
-})(GoogleMaps);
+export default GoogleMaps;

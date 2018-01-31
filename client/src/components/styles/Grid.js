@@ -1,9 +1,7 @@
 import glamorous from "glamorous";
 
 export const CenterMap = glamorous.div({
-	width: "100%",
-	height: "50vh",
-	display: "flex",
-	justifyContent: "center",
-	alignItems: "center"
+	width: "100px",
+	height: "300px",
+	zIndex: "10000"
 });

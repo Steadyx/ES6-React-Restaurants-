@@ -26,7 +26,6 @@ class Navbar extends Component {
 	render() {
 		const { toggled, active } = this.state;
 		const { history } = this.props;
-		console.log(history);
 		return (
 			<Header>
 				<Grid>

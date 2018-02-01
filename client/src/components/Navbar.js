@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import {
 	Header,
 	List,
@@ -24,8 +24,8 @@ class Navbar extends Component {
 	};
 
 	render() {
-		const { toggled, active } = this.state;
-		const { history } = this.props;
+		// const { toggled, active } = this.state;
+		// const { history } = this.props;
 		return (
 			<Header>
 				<Grid>

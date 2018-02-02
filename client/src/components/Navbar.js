@@ -15,7 +15,7 @@ class Navbar extends Component {
 		active: true
 	};
 
-	renderToggle = el => {
+			renderToggle = el => {
 		this.setState(prevState => ({
 			toggled: !prevState.toggled
 		}));

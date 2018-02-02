@@ -4,7 +4,7 @@ import {
 	withProps,
 	lifecycle,
 	withHandlers,
-	withStateHandlers
+	withState
 } from "recompose";
 import {
 	withScriptjs,
@@ -35,49 +35,61 @@ const GoogleMapHOC = compose(
 	}),
 	withScriptjs,
 	withGoogleMap,
-	withHandlers({
-		intiLocation: () => ({
-			retrieveLocation: {
-				promise: options => {
-					return new Promise(function(resolve, reject) {
-						navigator.geolocation.getCurrentPosition(resolve, reject, options);
-					});
-				}
-			},
-
-			resolveLocationPromise: {
-				log: console.log(this),
-				resolve: () => {
-					console.log(this);
-				}
-			}
-		})
+	withState("coords", "setCoords", {
+		lat: null,
+		lng: null
 	}),
-	withStateHandlers(
-		({ cordinates = { lat: null, lng: null } }) => ({
-			cords: cordinates
-		}),
-		{
-			setLocation: ({ cords }) => value => ({
-				cords: { lat: this.props.retrieveLocation }
-			})
+	withHandlers({
+		initLoc: (props) => () => {
+			return new Promise((resolve, reject) => {
+				const positionSuccess = (position) => {
+					resolve(position);
+				};
+				const error = (error) => {
+					reject(error);
+				};
+				return navigator.geolocation.getCurrentPosition(positionSuccess, error);
+			});
 		}
-	),
+	}),
 	lifecycle({
-		componentWillUpdate() {
+		componentDidMount() {
 			this.setState(() => ({
-				lat: this.props.setLocation
+				init: this.props.initLoc().then((loc) => {
+					const latitude = parseFloat(loc.coords.latitude);
+					const longitude = parseFloat(loc.coords.longitude);
+					return this.props.setCoords({
+						lat: latitude,
+						lng: longitude
+					});
+				})
 			}));
 		}
 	})
-)(props => (
+)((props) => (
 	<GoogleMap
-		defaultZoom={13}
-		defaultCenter={{ lat: 51.509865, lng: -0.118092 }}>
+		defaultZoom={14}
+		center={
+			props.coords.lat !== null
+				? props.coords
+				: {
+						lat: 51.5055823,
+						lng: -0.0984671
+					}
+		}>
 		{
-			(console.log(props),
+			(console.log(props.coords),
 			props.isMarkerShowen && (
-				<Marker position={{ lat: 51.509865, lng: -0.118092 }} />
+				<Marker
+					position={
+						props.coords.lat !== null
+							? props.coords
+							: {
+									lat: 51.5055823,
+									lng: -0.0984671
+								}
+					}
+				/>
 			))
 		}
 	</GoogleMap>

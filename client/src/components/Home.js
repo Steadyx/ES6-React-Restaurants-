@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { HomeContainer } from "./styles/Home";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import GoogleMapHOC from "./GoogleMaps";
+import GoogleSearchBarHOC from "./GoogleSearch";
 
 class Home extends Component {
 	render() {
@@ -13,6 +14,11 @@ class Home extends Component {
 							<GoogleMapHOC isMarkerShowen />
 						</Col>
 					</Row>
+					<Row middle="xs" center="xs">
+						<Col center="xl">
+							<GoogleSearchBarHOC style={{ width: "100%" }} />
+						</Col>
+					</Row>
 				</Grid>
 			</HomeContainer>
 		);
@@ -20,3 +26,4 @@ class Home extends Component {
 }
 
 export default Home;
+//

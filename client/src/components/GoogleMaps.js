@@ -1,51 +1,46 @@
-import React from "react";
+import React from 'react';
 import {
 	compose,
 	withProps,
 	lifecycle,
 	withHandlers,
 	withState
-} from "recompose";
+	// withStateHandlers
+} from 'recompose';
 import {
 	withScriptjs,
 	withGoogleMap,
 	GoogleMap,
 	Marker
-} from "react-google-maps";
+} from 'react-google-maps';
+import GoogleSearchHoc from './GoogleSearch';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
 const url = {
-	begin: "https://maps.googleapis.com/maps/api/js?key=",
+	begin: 'https://maps.googleapis.com/maps/api/js?key=',
 	apiKey: process.env.REACT_APP_GOOGLE_MAPS_PUBLIC_KEY,
-	end: "&v=3.exp&libraries=geometry,drawing,places"
+	end: '&v=3.exp&libraries=geometry,drawing,places'
 };
 
-const ContainerElement = () => (
-	<div style={{ width: "100%", height: "600px" }} />
-);
-const MapElement = () => <div style={{ width: "100%", height: "600px" }} />;
-
-const LoadigElement = () => <div style={{ width: "100%", height: "600px" }} />;
+const loading = () => <div>Loading... Please Wait</div>;
 
 const GoogleMapHOC = compose(
 	withProps({
 		googleMapURL: `${url.begin}${url.apiKey}${url.end}`,
-		loadingElement: LoadigElement(),
-		containerElement: ContainerElement(),
-		mapElement: MapElement()
+		loadingElement: <div style={{ width: '100%', height: '600px' }} />,
+		containerElement: <div style={{ width: '100%', height: '600px' }} />,
+		mapElement: <div style={{ width: '100%', height: '600px' }} />
 	}),
 	withScriptjs,
 	withGoogleMap,
-	withState("coords", "setCoords", {
-		lat: null,
-		lng: null
-	}),
+	withState('coords', 'setCoords', null),
 	withHandlers({
-		initLoc: (props) => () => {
+		initLoc: () => () => {
 			return new Promise((resolve, reject) => {
-				const positionSuccess = (position) => {
+				const positionSuccess = position => {
 					resolve(position);
 				};
-				const error = (error) => {
+				const error = error => {
 					reject(error);
 				};
 				return navigator.geolocation.getCurrentPosition(positionSuccess, error);
@@ -53,46 +48,50 @@ const GoogleMapHOC = compose(
 		}
 	}),
 	lifecycle({
+		componentWillMount() {
+			this.props.initLoc().then(loc => {
+				const latitude = parseFloat(loc.coords.latitude);
+				const longitude = parseFloat(loc.coords.longitude);
+				const pos = {
+					lat: latitude,
+					lng: longitude
+				};
+				localStorage.setItem('position', JSON.stringify(pos));
+			});
+		},
 		componentDidMount() {
-			this.setState(() => ({
-				init: this.props.initLoc().then((loc) => {
-					const latitude = parseFloat(loc.coords.latitude);
-					const longitude = parseFloat(loc.coords.longitude);
-					return this.props.setCoords({
-						lat: latitude,
-						lng: longitude
-					});
-				})
-			}));
+			const item = JSON.parse(localStorage.getItem('position'));
+			this.props.setCoords(item);
+			console.log(item);
 		}
 	})
-)((props) => (
-	<GoogleMap
-		defaultZoom={14}
-		center={
-			props.coords.lat !== null
-				? props.coords
-				: {
-						lat: 51.5055823,
-						lng: -0.0984671
+)(props => (
+	<div>
+		<GoogleMap
+			defaultZoom={14}
+			center={
+				props.coords !== null
+					? props.coords
+					: {
+							lat: 51.5055823,
+							lng: -0.0984671
 					}
-		}>
-		{
-			(console.log(props.coords),
-			props.isMarkerShowen && (
+			}>
+			{props.isMarkerShowen && (
 				<Marker
 					position={
-						props.coords.lat !== null
+						props.coords !== null
 							? props.coords
 							: {
 									lat: 51.5055823,
 									lng: -0.0984671
-								}
+							}
 					}
 				/>
-			))
-		}
-	</GoogleMap>
+			)}
+		</GoogleMap>
+		<GoogleSearchHoc />
+	</div>
 ));
 
 export default GoogleMapHOC;

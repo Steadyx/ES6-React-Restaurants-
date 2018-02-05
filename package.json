@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-spinners": "^0.2.6",
+    "recompose": "^0.26.0"
+  }
+}

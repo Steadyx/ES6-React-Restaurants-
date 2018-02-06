@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hip-voyager-194314",
+  "private_key_id": "b5a9a1ffb0feda92b48b580ab1e2d6fac50d2508",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC65zOkbA7m/7kq\nQ90lHysNMi1Hychx/aUWHncZ3iNwyJBhIybz7Jyht6WxNgpsBjwBDzGmbwLYOe7K\nyE1mnrjz0ATSCeUa7V+PY5tvvvUSCi+/1Y8eH0nWNth3CKkYTQDj3WkLxGLJpTGW\n7tnW339Yz0Fq86zxPpkuChFnCPVE4/UZsuaSBFl9V/E0ASrM91sqOnPUAZZ4HNar\nQ0We7AU7Q5lqB9d5KgleHG8v/zNgU0OIdSQ9FN1kJHsedgVekweyFR7zkZv6mcun\njpPbdYkPJ9rq5ddgTNFj7bnMgVg+hkK0IyxDa1dCRP6SmHdSnGDLzmqV0D2RsWjj\nHDVQ8oRHAgMBAAECggEAICzA9SMtBZMsOxxnq4ZMEP98UAlqmkUB8GbaNffJvhao\n1DAK+p7W7/f/bBxTevkvxzboYzBlGvgOJZaJzIqyaDZ9PfM6H4KRmsuY7InBApQC\nWFHZS2Qzf879QLCa+3X2G0P4W3A5WWE4wjToB1d+QrmbF2BPe1A9anGNQWGHZ45T\nERdFm1Lr+BlaV1SeWvhXGm2go317X7YbUdqdYfH6rBuxYWYA9x80boC0U2NNHOC9\nGYD8gOtNxUpnOViT01pi7oMRnZumJ1ZP61mkX9XiOu5ogtIO9+ALurSuQsGo6+1B\njBwlRXUD6ysQtvg4BzmePk8JHLuiEl3puzcGWgGsQQKBgQDsHaYSTRj9HGx7+O81\n3ZCAPZfOKDlSlRyCA0tqynJDl6Ru0IvjsWuEeWZImn+CPjW648rnRc88Y0Toz/oa\nRaByyFO8CaAUiGLb2mSaeUakuN1/Q3huxMlGsMlLmm3FJIxA0kaqv8qj7f1OVCjz\nZ81WnkmiBTdVf2V149CNFsEKsQKBgQDKpJddWtOv/pegmbcb7Xrd8pBVgEIYp+z5\nfAo02u8w6fSh4lYYbGLnJvGJeCUkt5tsi9bNmb53MW2bBo7ciAm4VglzPGtXAEuO\nmc0slhgncEel02O/Pkaxh5yUgsR7Ji4pyZbEjWx63qxB9vutf/Et2YhtWirWPICX\nErOuvSpMdwKBgQChwC3km6xiuPYYd5Bn9kDnmUpFkIi0ajH9XwRrRATDCT88KuGq\nOgDN39ySIET5lGR6g1Kc3NX7KIYsd01+cfRYraOvTWi8qDIRKquAp1QdxAb5B9+Z\nAnZgVvuPL1vDkiYCwgpnLrxDUOYWotDq7lFc5VLMC4a8q2l2OXrFLLFSAQKBgEtU\n0nw+5pD3eRCX9C0qpFFb+fH/AxM9YegBB55MgTzSzEFd7ZmYuU+q94GeK1ix9NJu\nTcUS0W5n7pIB5xvuaoafXVX8cP7fujbh0BcyGPqYT9pCckNG+GrIuhmvXzFUqTaZ\nnTWmSVyH6MuA8GC4PkVIJ+JW8bPAvCDtL+TWp6HTAoGBAJSY4BSeQlVqm7ECmnel\nmD00l5BCvQ6umW/bS7iYPdVdt6ul/EavR9Vj5HoaIGPiQNC4T/EmdpuFoyHePCkA\nfs+Ud2eHoFwOHsUWgv2WjwBCWtHkmZjoSxH6EccKHGbRugoGo7XT6R4Nqv7g02H6\npCNwkaU9RbcXbqWbaKbMUkjZ\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-database-key@hip-voyager-194314.iam.gserviceaccount.com",
+  "client_id": "107616873858284486685",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-database-key%40hip-voyager-194314.iam.gserviceaccount.com"
+}

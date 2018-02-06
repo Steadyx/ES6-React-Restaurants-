@@ -13,11 +13,6 @@ class Home extends Component {
 							<GoogleMaps />
 						</Col>
 					</Row>
-					{/* <Row middle="xs" center="xs">
-						<Col center="xl">
-							<GoogleSearchBarHOC style={{ width: "100%" }} />
-						</Col>
-					</Row> */}
 				</Grid>
 			</HomeContainer>
 		);

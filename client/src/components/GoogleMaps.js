@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Marker } from 'react-google-maps';
-import GoogleMapsWrapper from './GoogleMapsWrapper';
+import { GoogleMapsWrapper } from './HigherOrderWrappers';
+import PlacesWithStandaloneSearchBox from './GoogleSearch';
 import Loader from './Loader';
 
 const url = {
@@ -51,15 +52,18 @@ class GoogleMaps extends Component {
 		const { position } = this.state;
 
 		return position.lat !== null && position.lng !== null ? (
-			<GoogleMapsWrapper
-				googleMapURL={`${url.begin}${url.apiKey}${url.end}`}
-				loadingElement={<div style={{ height: '100%' }} />}
-				containerElement={<div style={{ height: '600px' }} />}
-				mapElement={<div style={{ height: '100%' }} />}
-				defaultZoom={14}
-				defaultCenter={position}>
-				<Marker position={position} />
-			</GoogleMapsWrapper>
+			<div>
+				<GoogleMapsWrapper
+					googleMapURL={`${url.begin}${url.apiKey}${url.end}`}
+					loadingElement={<div style={{ height: '100%' }} />}
+					containerElement={<div style={{ height: '600px' }} />}
+					mapElement={<div style={{ height: '100%' }} />}
+					defaultZoom={14}
+					defaultCenter={position}>
+					<Marker position={position} />
+				</GoogleMapsWrapper>
+				<PlacesWithStandaloneSearchBox />
+			</div>
 		) : (
 			<Loader />
 		);
